@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{%  providers_media_js %}
+
+
+{% block extra_head %}
+    <style>
+        body {
+            background-color: #202020;
+        }
+
+        .login_content {
+            width: 90vw;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        .login_content p {
+            font-size: 60px;
+            color: white;
+            margin-top: 10%;
+
+        }
+        .login_content_text_button {
+            background-color: #202020; /* Green */
+            border: 2px solid white;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            border-radius : 10px ;
+            width:400px;
+            margin:10px 0 ;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="login_content">
+        <div class="login_content_text">
+            <p>5초만에 로그인하고 가위바위보 하러 가기</p>
+            <form action="">
+                <a href="{% provider_login_url 'google' %}"><input class='login_content_text_button' type="button"value="구  글"></a>
+            </form>
+            <form action="">
+                <a href="{% provider_login_url 'kakao' %}"><input class='login_content_text_button' type="button"value="카카오"></a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <div class="footer_content">
+
+            <p class="text-light">&copy; 피로그래밍 | 회장 : 정성모 </br>
+                서울 특별시 관악구 관악로 1, 서울대학교 벤처 경영 교육 및 연구 동아리
+            </p>
+
+        </div>
+    </div>
+{% endblock %}

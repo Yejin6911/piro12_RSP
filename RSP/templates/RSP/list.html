@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game List</title>
+</head>
+<body>
+<div>{{ current_user }}</div>
+<br>
+{% for game in game_list %}
+    <div id="user">{{ game.to_user }} VS {{ game.from_user }}</div>
+
+    {% if game.to_user_rsp %}
+        {% if current_user == game.to_user %}
+            <div>나 : {{ game.to_user_rsp }}</div>
+            <div>{{ game.from_user }} : {{ game.from_user_rsp }}</div>
+            <div class="user_result">결과 : {{ game.to_user_result }}</div>
+        {% else %}
+            <div>{{ game.to_user }} : {{ game.to_user_rsp }}</div>
+            <div>나 : {{ game.from_user_rsp }}</div>
+            <div class="user_result">결과 : {{ game.from_user_result }}</div>
+        {% endif %}
+
+    {% else %}
+        {% if current_user == game.from_user %}
+            <div id="result">{{ game.result }}</div>
+            <div>나 : {{ game.from_user_rsp }}</div>
+        
+        {% else %}
+            <form action="{% url 'RSP:accept' game.pk %}">
+                <input type="submit" value="대응하기">
+            </form>
+        {% endif %}
+    {% endif %}
+    <div>===========================</div>
+{% endfor %}
+</body>
+</html>

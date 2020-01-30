@@ -46,12 +46,14 @@ def send_friend_request(request):
         return redirect("RSP:list")
 
     else:
-        form = RequestForm()
+        initial_dictionary = {
+            "current_user": request.user.id
+        }
+        form = RequestForm(initial=initial_dictionary)
         ctx = {
             "form": form
         }
         return render(request, "RSP/game.html", ctx)
-
 
 def rsp_result(user1, user2):
     if user1 == user2:
@@ -60,7 +62,7 @@ def rsp_result(user1, user2):
         if user1 == "가위":
             if user2 == "바위":
                 return "패배"
-            else:  # user2 == "보"
+            else:
                 return "승리"
 
         if user1 == "바위":
@@ -87,8 +89,8 @@ def accept_friend_request(request, pk):
         to_user_rsp = friend_request.to_user_rsp
         from_user_rsp = friend_request.from_user_rsp
 
-        friend_request.to_user_result = rsp_result(to_user_rsp, from_user_rsp)
-        friend_request.from_user_result = rsp_result(from_user_rsp, to_user_rsp)
+        friend_request.to_user_result = rsp_result(str(to_user_rsp.weapon), str(from_user_rsp.weapon))
+        friend_request.from_user_result = rsp_result(str(from_user_rsp.weapon), str(to_user_rsp.weapon))
 
         friend_request.save()
         form.delete()

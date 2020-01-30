@@ -12,7 +12,8 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         social_app_name = sociallogin.account.provider.upper()
         if social_app_name =="GOOGLE":
             username = data.get('last_name')+data.get('first_name')
-
+        else:
+            username = data.get('username')
 
         first_name = data.get('first_name')
         last_name = data.get('last_name')

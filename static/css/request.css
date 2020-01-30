@@ -27,13 +27,6 @@
     padding-right: 5px;
 }
 
-#accept_wrap #id_to_user_rsp, #accept_wrap #id_from_user_rsp {
-    background: none;
-    color: #ffc8c8;
-    border: 1px solid #ffc8c8;
-    padding: 5px;
-}
-
 #accept_wrap #accept_input_button {
     border: 3px solid #ffc8c8;
     border-radius: 5px;

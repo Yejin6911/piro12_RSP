@@ -1,0 +1,57 @@
+.login_content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_content_text div:nth-child(1) {
+    width: 400px;
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#login-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-buttons a {
+    width: 100%;
+    padding: 6px 0;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffc8c8;
+    background: none;
+    border-radius: 7px;
+    border: 3px solid #ffc8c8;
+    margin-top: 17px;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+#login-buttons a:hover {
+    text-decoration: none;
+}
+
+#login-buttons a:nth-child(1):hover {
+    background: rgb(234, 067, 053);
+    border: rgb(234, 067, 053);
+    color: white;
+    font-weight: 900;
+    transform: scale(1.1);
+}
+
+#login-buttons a:nth-child(2):hover {
+    background: #f7e600;
+    border: #f7e600;
+    color: #59310c;
+    font-weight: 900;
+    transform: scale(1.1);
+}

@@ -1,0 +1,45 @@
+{% extends "RSP/base.html" %}
+
+{% block content %}
+<div id="detail_all_wrap">
+    <div id="detail_wrap">
+        <div id="detail_title">
+            {{ game.pk }} - {{ game.to_user }} VS {{ game.from_user }}
+        </div>
+
+        <div id="detail_content_wrap">
+            {% if game.to_user_rsp %}
+                {% if current_user == game.to_user %}
+                    <div><span>나</span> : {{ game.to_user_rsp }}</div>
+                    <div><span>{{ game.from_user }}</span> : {{ game.from_user_rsp }}</div>
+                    <div class="user_result_detail"><span>결과</span> : {{ game.to_user_result }}</div>
+
+                {% else %}
+                    <div>{{ game.to_user }} : {{ game.to_user_rsp }}</div>
+                    <div>나 : {{ game.from_user_rsp }}</div>
+                    <div class="user_result_detail">결과 : {{ game.from_user_result }}</div>
+                {% endif %}
+
+            {% else %}
+                {% if current_user == game.from_user %}
+                    <div class="result_detail">{{ game.result }}</div>
+                    <div>나 : {{ game.from_user_rsp }}</div>
+                    <form action="{% url 'RSP:delete' game.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="게임 취소" class="in_detail_button">
+                    </form>
+
+                {% else %}
+                    <form action="{% url 'RSP:accept' game.pk %}" id="in_detail_button">
+                        <input type="submit" value="대응하기" class="in_detail_button">
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <form action="{% url 'RSP:list' %}" id="out_detail_button">
+            <input type="submit" value="전적 목록" class="out_detail_button">
+        </form>
+    </div>
+</div>
+{% endblock %}

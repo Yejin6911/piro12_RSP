@@ -1,0 +1,131 @@
+#title {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    color: white;
+    padding: 30px 0 10px;
+}
+
+#content {
+    color: white;
+    font-size: 13px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 100;
+    margin-bottom: 50px;
+    opacity: 0.5;
+}
+
+#current_user {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffc8c8;
+}
+
+#current_user span {
+    color: #ffc8c8;
+    font-weight: 900;
+}
+
+#game_list {
+    color: white;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 20px;
+    padding: 0 10%;
+}
+
+.unit {
+    padding: 5px 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition-duration: 0.5s;
+}
+
+.unit:hover {
+    transform: scale(1.1);
+    border: 1px solid #ffc8c8;
+    padding: 10px 20px;
+}
+
+#user {
+    width: 200px;
+}
+
+#user span {
+    color: #ffc8c8;
+}
+
+#info {
+    padding: 2px 10px;
+    background: none;
+    border: 2px solid #ffc8c8;
+    border-radius: 5px;
+    color: #ffc8c8;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    transition-duration: 0.5s;
+}
+
+#info:hover {
+    background: #ffc8c8;
+    color: #202020;
+    transform: scale(1.1);
+    font-weight: 900;
+    cursor: pointer;
+}
+
+
+#result_wrap {
+    display: flex;
+}
+
+#result_wrap #result {
+    margin-right: 10px;
+}
+
+#result_wrap input {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    transition-duration: 0.5s;
+    background: none;
+    border-radius: 5px;
+    border: 2px solid #ffc8c8;
+    color: #ffc8c8;
+    padding: 2px 10px;
+}
+
+#result_wrap input:hover {
+    background: #ffc8c8;
+    color: #202020;
+    transform: scale(1.1);
+    font-weight: 900;
+    cursor: pointer;
+}
+
+#letsgo {
+    padding: 2px 10px;
+    background: none;
+    border: 2px solid #ffc8c8;
+    border-radius: 5px;
+    color: #ffc8c8;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    transition-duration: 0.5s;
+}
+
+#letsgo:hover {
+    background: #ffc8c8;
+    color: #202020;
+    transform: scale(1.1);
+    font-weight: 900;
+    cursor: pointer;
+}

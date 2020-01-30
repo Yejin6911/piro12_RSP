@@ -1,38 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Game List</title>
-</head>
-<body>
-<div>{{ current_user }}</div>
-<br>
-{% for game in game_list %}
-    <div id="user">{{ game.to_user }} VS {{ game.from_user }}</div>
+{% extends "RSP/main.html" %}
 
-    {% if game.to_user_rsp %}
-        {% if current_user == game.to_user %}
-            <div>나 : {{ game.to_user_rsp }}</div>
-            <div>{{ game.from_user }} : {{ game.from_user_rsp }}</div>
-            <div class="user_result">결과 : {{ game.to_user_result }}</div>
-        {% else %}
-            <div>{{ game.to_user }} : {{ game.to_user_rsp }}</div>
-            <div>나 : {{ game.from_user_rsp }}</div>
-            <div class="user_result">결과 : {{ game.from_user_result }}</div>
-        {% endif %}
+{% block content %}
+    <div id="title">게임 전적</div>
+    <div id="content">
+        현재 플레이어의 게임 전적을 보여주는 페이지입니다. 떡볶이 먹고 싶다.<br />
+        사실 이 글은 큰 의미 없고 그냥 디자인상 예뻐 보이라고 넣었어요. 좀 더 이 글이 길었으면 좋겠어서 더 적어 봅니다.
+    </div>
+    <div id="current_user"><span>|</span>  현재 플레이어 : {{ current_user }}</div>
 
-    {% else %}
-        {% if current_user == game.from_user %}
-            <div id="result">{{ game.result }}</div>
-            <div>나 : {{ game.from_user_rsp }}</div>
-        
-        {% else %}
-            <form action="{% url 'RSP:accept' game.pk %}">
-                <input type="submit" value="대응하기">
-            </form>
-        {% endif %}
-    {% endif %}
-    <div>===========================</div>
-{% endfor %}
-</body>
-</html>
+    <div id="game_list">
+        {% for game in game_list %}
+            <div class="unit">
+                <div id="user">
+                    <span>{{ game.pk }}</span> - {{ game.to_user }} <span>VS</span> {{ game.from_user }}
+                </div>
+
+                {% if game.to_user_rsp %}
+                    {% if current_user == game.to_user %}
+                        <div class="user_result">결과 : {{ game.to_user_result }}</div>
+
+                    {% else %}
+                        <div class="user_result">결과 : {{ game.from_user_result }}</div>
+                    {% endif %}
+
+                {% else %}
+                    {% if current_user == game.from_user %}
+                        <div id="result_wrap">
+                            <div id="result">{{ game.result }}</div>  <!--진행중..-->
+
+                            <form action="{% url 'RSP:delete' game.pk %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="게임 취소">
+                            </form>
+                        </div>
+
+                    {% else %}
+                        <form action="{% url 'RSP:accept' game.pk %}">
+                            <input type="submit" value="대응하기" id="letsgo">
+                        </form>
+                    {% endif %}
+                {% endif %}
+
+                <form action="{% url 'RSP:detail' game.pk %}">
+                    <input type="submit" value="게임정보" id="info">
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

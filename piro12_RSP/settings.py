@@ -64,7 +64,7 @@ ROOT_URLCONF = 'piro12_RSP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'piro12_RSP', 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,9 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'piro12_RSP', 'static'),
-    ]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # 소셜로그인 정보를 User 모델 클래스에 저장
@@ -149,3 +147,6 @@ ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 버튼 클릭 시 자동 로그아�
 SOCIAL_ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_AUTHENTICATION_METHOD = 'Email'
 ACCOUNT_USERNAME_REQUIRED=False
+
+#유저 커스텀!!!!!!
+SOCIALACCOUNT_ADAPTER = 'adapters.SocialAccountAdapter'

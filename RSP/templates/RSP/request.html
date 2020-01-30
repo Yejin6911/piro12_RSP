@@ -2,12 +2,15 @@
 
 {% block content %}
 <div id="accept_wrap">
+    <div id="request_title">
+        {{ game.from_user }}에게 반격하세요!
+    </div>
     <form action="" method="post">
         {% csrf_token %}
         <table>
             {{ form.as_p }}
         </table>
-        <input type="submit" value="공격하기!" id="accept_input_button">
+        <input type="submit" value="반격하기!" id="accept_input_button">
     </form>
 </div>
 {% endblock %}

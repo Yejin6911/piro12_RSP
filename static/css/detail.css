@@ -1,0 +1,106 @@
+/*div {*/
+/*    border: 1px solid #cccccc;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+#detail_all_wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#detail_wrap {
+    width: 510px; height: 280px;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #141414;
+    border-radius: 7px;
+    box-shadow: 7px 7px 4px black;
+}
+
+#detail_title {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+    color: white;
+}
+
+#detail_content_wrap div {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#detail_wrap span {
+    color: #ffc8c8;
+    font-family: "Noto Sans KR", "sans-serif";
+    font-weight: 700;
+}
+
+#detail_content_wrap .user_result_detail {
+    font-size: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ffc8c8;
+}
+
+#out_detail_button {
+    display: flex;
+    justify-content: center;
+}
+
+.out_detail_button {
+    background: none;
+    border: 2px solid #ffc8c8;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ffc8c8;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition-duration: 0.5s;
+}
+
+.out_detail_button:hover {
+    background: #ffc8c8;
+    color: #202020;
+    font-weight: 900;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#in_detail_button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffc8c8;
+}
+
+.in_detail_button {
+        background: none;
+    border: 2px solid #ffc8c8;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #ffc8c8;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition-duration: 0.5s;
+}
+
+.in_detail_button:hover {
+    background: #ffc8c8;
+    color: #202020;
+    font-weight: 900;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.result_detail {
+    color: #ffc8c8;
+}

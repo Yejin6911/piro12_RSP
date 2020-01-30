@@ -1,5 +1,3 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .forms import *
 from RSP.models import FriendRequest
@@ -25,6 +23,16 @@ def list(request):
     return render(request, "RSP/list.html", ctx)
 
 
+def detail(request, pk):
+    current_user = request.user
+    game = FriendRequest.objects.get(pk=pk)
+    ctx = {
+        "game": game,
+        "current_user": current_user
+    }
+    return render(request, "RSP/detail.html", ctx)
+
+
 def send_friend_request(request):
     if request.method == "POST":
         form = RequestForm(request.POST)
@@ -35,14 +43,14 @@ def send_friend_request(request):
         friend_request.from_user_num = request.user.id
         friend_request.save()
 
-        return redirect("list")
+        return redirect("RSP:list")
 
     else:
         form = RequestForm()
         ctx = {
             "form": form
         }
-        return render(request, "RSP/request.html", ctx)
+        return render(request, "RSP/game.html", ctx)
 
 
 def rsp_result(user1, user2):
@@ -85,14 +93,20 @@ def accept_friend_request(request, pk):
         friend_request.save()
         form.delete()
 
-        return redirect("list")
+        return redirect("RSP:detail", pk)
 
     else:
         form = AcceptForm()
+        game = FriendRequest.objects.get(pk=pk)
         ctx = {
             "form": form,
+            "game": game,
         }
         return render(request, "RSP/request.html", ctx)
 
-def detail(request, pk):
-    pass
+
+def delete(request, pk):
+    game = FriendRequest.objects.get(pk=pk)
+    if request.method == "POST":
+        game.delete()
+    return redirect("RSP:list")

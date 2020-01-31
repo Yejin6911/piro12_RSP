@@ -34,8 +34,11 @@ def detail(request, pk):
 
 
 def send_friend_request(request):
+    initial_dictionary = {
+        "current_user": request.user.id
+    }
     if request.method == "POST":
-        form = RequestForm(request.POST)
+        form = RequestForm(request.POST, initial=initial_dictionary)
         friend_request = form.save()
 
         friend_request.from_user = request.user
@@ -44,11 +47,7 @@ def send_friend_request(request):
         friend_request.save()
 
         return redirect("RSP:list")
-
     else:
-        initial_dictionary = {
-            "current_user": request.user.id
-        }
         form = RequestForm(initial=initial_dictionary)
         ctx = {
             "form": form
